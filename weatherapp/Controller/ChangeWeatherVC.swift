@@ -1,4 +1,4 @@
-//
+    //
 //  ChangeWeatherVC.swift
 //  weatherapp
 //
@@ -7,10 +7,13 @@
 //
 
 import UIKit
+    protocol ChangeCityDelegate{
+        func userEnteredANewCityName(city:String)
+    }
 
 class ChangeWeatherVC: UIViewController {
 
-    
+    var delegate : ChangeCityDelegate?
 
     @IBOutlet weak var changeCityTextField: UITextField!
     
@@ -30,8 +33,9 @@ class ChangeWeatherVC: UIViewController {
     }
     
     @IBAction func getWeatherPressed(_ sender: Any) {
-        
-        
+        let cityName=changeCityTextField.text!
+        delegate?.userEnteredANewCityName(city: cityName)
+        self.dismiss(animated: true, completion: nil)
         
     }
 }
